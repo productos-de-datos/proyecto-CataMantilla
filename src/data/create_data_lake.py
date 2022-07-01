@@ -21,10 +21,35 @@ def create_data_lake():
 
 
     """
-    raise NotImplementedError("Implementar esta función")
+    #raise NotImplementedError("Implementar esta función")
+
+    import os
+
+    os.mkdir("data_lake")
+    parent_directoy = 'data_lake'
+    directory = [
+        'landing',
+        'raw',
+        'cleansed',
+        'business'
+    ]
+
+    for d in directory:
+        os.mkdir(os.path.join('data_lake',d))
+    
+    dir_business = [
+        'business/reports',
+        'business/reports/figures',
+        'business/features',
+        'business/forecasts'
+    ]
+
+    for d in dir_business:
+        os.mkdir(os.path.join('data_lake',d))
 
 
 if __name__ == "__main__":
     import doctest
 
+    create_data_lake()
     doctest.testmod()
