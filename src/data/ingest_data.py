@@ -3,10 +3,6 @@ Módulo de ingestión de datos.
 -------------------------------------------------------------------------------
 
 """
-import requests
-from bs4 import BeautifulSoup
-import re
-
 def ingest_data():
     """Ingeste los datos externos a la capa landing del data lake.
 
@@ -15,6 +11,10 @@ def ingest_data():
     descarga debe realizarse usando únicamente funciones de Python.
 
     """
+    import requests
+    from bs4 import BeautifulSoup
+    import re
+    
     url = 'https://github.com/jdvelasq/datalabs/tree/master/datasets/precio_bolsa_nacional/xls'
 
     r = requests.get(url)
