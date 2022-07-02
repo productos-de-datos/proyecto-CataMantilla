@@ -62,7 +62,7 @@
     },
     {
       "name": "Test 07",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint Task LocalTarget",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint Task",
       "run": "python3 grader.py 07",
       "input": "",
       "output": "",
