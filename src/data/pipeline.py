@@ -11,83 +11,84 @@ En luigi llame las funciones que ya creo.
 
 
 """
-import create_data_lake
-import ingest_data
-import transform_data
-import clean_data
-import compute_daily_prices
-import compute_monthly_prices
-import luigi
-from luigi import Task, LocalTarget
-
-
-class ingest_data_pipeline(Task):
-    def output(self):
-        return LocalTarget('data_lake/landing/result.txt')
-    
-    def run(self):
-        with self.output().open('w') as outfile:
-            ingest_data.ingest_data()
-
-
-class transform_data_pipeline(Task):
-    def requires(self):
-        return ingest_data_pipeline()
-    
-    def output(self):
-        return LocalTarget('data_lake/raw/result.txt')
-    
-    def run(self):
-        with self.output().open('w') as outfile:
-            transform_data.transform_data()
-
-
-class clean_data_pipeline(Task):
-    def requires(self):
-        return transform_data_pipeline()
-
-    def output(self):
-        return LocalTarget('data_lake/cleansed/results3.txt')
-
-    def run(self):
-        with self.output().open('w') as outfile:
-            clean_data.clean_data()
-
-
-class daily_reports_pipeline(Task):
-    def requires(self):
-        return clean_data_pipeline()
-    
-    def output(self):
-        return LocalTarget('data_lake/business/precios-dia.csv')
-
-    def run(self):
-        with self.output().open('w') as outfile:
-            compute_daily_prices.compute_daily_prices()
-    
-
-class monthly_reports_pipeline(Task):
-    def requires(self):
-        return clean_data_pipeline()
-    
-    def output(self):
-        return LocalTarget('data_lake/business/precios-mes.csv')
-
-    
-    def run(self):
-        with self.output().open('w') as outfile:
-            compute_monthly_prices.compute_monthly_prices()
-    
-
-    class reports(Task):
-        def requires(self):
-            return[daily_reports_pipeline(), monthly_reports_pipeline()]
-
-        
-        
-
-if __name__ == "__main__":
-    import doctest
-
-    luigi.run(['reports', '--local-scheduler'])
-    doctest.testmod()
+import luigi 
+from luigi import Task, LocalTarget 
+ 
+ 
+class ingestar_data(Task): 
+    def output(self): 
+        return LocalTarget('data_lake/landing/arc.csv') 
+ 
+    def run(self): 
+ 
+        from ingest_data import ingest_data 
+        with self.output().open('w') as archivos: 
+            ingest_data() 
+ 
+ 
+class transformar_data(Task): 
+    def requires(self): 
+        return ingestar_data() 
+ 
+    def output(self): 
+        return LocalTarget('data_lake/raw/arc.txt') 
+ 
+    def run(self): 
+ 
+        from transform_data import transform_data 
+        with self.output().open('w') as archivos: 
+            transform_data() 
+ 
+ 
+class limpiar_data(Task): 
+    def requires(self): 
+        return transformar_data() 
+ 
+    def output(self): 
+        return LocalTarget('data_lake/cleansed/arc.txt') 
+ 
+    def run(self): 
+ 
+        from clean_data import clean_data 
+        with self.output().open('w') as archivos: 
+            clean_data() 
+ 
+ 
+class computar_precio_diario(Task): 
+    def requires(self): 
+        return limpiar_data() 
+ 
+    def output(self): 
+        return LocalTarget('data_lake/business/arc.txt') 
+ 
+    def run(self): 
+ 
+        from compute_daily_prices import compute_daily_prices 
+        with self.output().open('w') as archivos: 
+            compute_daily_prices() 
+ 
+ 
+class computar_precio_mensual(Task): 
+    def requires(self): 
+        return computar_precio_diario() 
+ 
+    def output(self): 
+        return LocalTarget('data_lake/business/arc.txt') 
+ 
+    def run(self): 
+ 
+        from compute_monthly_prices import compute_monthly_prices 
+        with self.output().open('w') as archivos: 
+            compute_monthly_prices() 
+ 
+ 
+if __name__ == '__main__': 
+    try: 
+ 
+        import doctest 
+        doctest.testmod() 
+ 
+        luigi.run(["computar_precio_mensual", "--local-scheduler"]) 
+ 
+    except: 
+        raise NotImplementedError("Implementar el orquestador de luigi")
