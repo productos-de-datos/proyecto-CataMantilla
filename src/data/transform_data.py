@@ -1,6 +1,5 @@
 from ast import excepthandler
-import pandas as pd
-import os
+
 
 def transform_data():
     """Transforme los archivos xls a csv.
@@ -11,6 +10,9 @@ def transform_data():
     H23.
 
     """
+import pandas as pd
+import os
+
 for f in range(1995, 2022):
     if f == 2016 or f == 2017:
         df_read = pd.read_excel(
