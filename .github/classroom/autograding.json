@@ -12,7 +12,7 @@
     },
     {
       "name": "Test 02",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint bs4 requests",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint bs4 requests openpyxl xlrd",
       "run": "python3 grader.py 02",
       "input": "",
       "output": "",
@@ -32,7 +32,7 @@
     },
     {
       "name": "Test 04",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
       "run": "python3 grader.py 04",
       "input": "",
       "output": "",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Test 05",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
       "run": "python3 grader.py 05",
       "input": "",
       "output": "",
@@ -52,7 +52,7 @@
     },
     {
       "name": "Test 06",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
       "run": "python3 grader.py 06",
       "input": "",
       "output": "",
