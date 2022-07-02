@@ -1,3 +1,7 @@
+import encodings
+import pandas as pd
+import os
+
 def compute_monthly_prices():
     """Compute los precios promedios mensuales.
 
@@ -12,10 +16,19 @@ def compute_monthly_prices():
 
 
     """
-    raise NotImplementedError("Implementar esta función")
+    file = 'data_lake/cleansed/precios-horarios.csv' 
+    mean_price = pd.read_csv(file)
+    mean_price['fecha'] = pd.to_datetime(mean_price['fecha'])
+    mean_price =(
+        mean_price.groupby(pd.Grouper(key='fecha', freq='M')).mean().reset_index()
+    )
+    mean_price[['fecha', 'precio']].to_csv(
+        'data_lake/business/precios-mensuales.csv',encoding='utf-8', index=False
+    )
 
 
 if __name__ == "__main__":
     import doctest
 
+    compute_monthly_prices()
     doctest.testmod()
