@@ -1,19 +1,20 @@
+"""
+Modulo Transformación de datos
+
+Toma los archivos que se encuentran en data_lake/landing/ 
+Se realiza los cambios de formato modificando la fecha
+a YYYY-MM-DD y  el formato de la hora a H00
+Una vez se ha realizado la modificación se cambia el formato
+de los archivos de xls o xlsx a csv.
+"""
+
 from ast import excepthandler
-
-
-def transform_data():
-    """Transforme los archivos xls a csv.
-
-    Transforme los archivos data_lake/landing/*.xls a data_lake/raw/*.csv. Hay
-    un archivo CSV por cada archivo XLS en la capa landing. Cada archivo CSV
-    tiene como columnas la fecha en formato YYYY-MM-DD y las horas H00, ...,
-    H23.
-
-    """
 import pandas as pd
 import os
 
-for f in range(1995, 2022):
+def transform_data():
+
+ for f in range(1995, 2022):
     if f == 2016 or f == 2017:
         df_read = pd.read_excel(
             'data_lake/landing/{}.xls'.format(f),
