@@ -3,6 +3,8 @@
 .PHONY: transform_data
 .PHONY: clean_data
 .PHONY: compute_daily_prices
+.PHONY: make_daily_prices_plot
+.PHONY: make_monthly_prices_plot
 .PHONY: pipeline
 .PHONY: make_features
 .PHONY: train_model
