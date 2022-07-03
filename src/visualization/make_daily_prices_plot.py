@@ -19,14 +19,16 @@ def make_daily_prices_plot():
 
     plt.figure(figsize=(10, 6))
     plt.plot(x, y, 'b', label='Promedio Diario')
-    plt.title('Promedio Diario')
+    plt.title('Precios Promedios Diarios')
     plt.xlabel('Fecha')
     plt.ylabel('Precio')
     plt.legend()
     plt.savefig("data_lake/business/reports/figures/daily_prices.png")
 
 
+
 if __name__ == "__main__":
-    import doctest
-    make_daily_prices_plot()
+    
+    import doctest    
     doctest.testmod()
+    make_daily_prices_plot()
