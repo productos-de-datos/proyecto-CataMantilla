@@ -1,16 +1,14 @@
 """
 Módulo de ingestión de datos.
 -------------------------------------------------------------------------------
+Descarga los archivos de precios de bolsa nacional en los formatos xls y xlsx a
+la capa data_lake/landing de la siguiente ruta:
+    https://github.com/jdvelasq/datalabs/tree/master/datasets/precio_bolsa_nacional/
+
 
 """
 def ingest_data():
-    """Ingeste los datos externos a la capa landing del data lake.
-
-    Del repositorio jdvelasq/datalabs/precio_bolsa_nacional/xls/ descarge los
-    archivos de precios de bolsa nacional en formato xls a la capa landing. La
-    descarga debe realizarse usando únicamente funciones de Python.
-
-    """
+    
     import requests
     from bs4 import BeautifulSoup
     import re
