@@ -1,16 +1,18 @@
 """
 Modulo Transformación de datos
 
-Toma los archivos que se encuentran en data_lake/landing/ 
-Se realiza los cambios de formato modificando la fecha
-a YYYY-MM-DD y  el formato de la hora a H00
+La funcion transform_data toma los archivos que
+se encuentran data_lake/landing/ realiza los cambios
+de formato modificando la fecha a YYYY-MM-DD y 
+el formato de la hora a H00
 Una vez se ha realizado la modificación se cambia el formato
 de los archivos de xls o xlsx a csv.
 """
 
-from ast import excepthandler
-import pandas as pd
 import os
+
+import pandas as pd
+
 
 def transform_data():
 
