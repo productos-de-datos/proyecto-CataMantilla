@@ -1,13 +1,14 @@
 """
 Modulo Limpieza de datos
 -----------------------------------
-Use los archivos data_lake/raw/*.csv, cree el archivo
-data_lake/cleansed/precios-horarios.csv. el cual debe tener 
+La función clean_data
+Usa los archivos data_lake/raw/*.csv, crea el archivo
+data_lake/cleansed/precios-horarios.csv. el contiene 
 lo siguiente:
     * fecha: fecha en formato YYYY-MM-DD
     * hora: hora en formato HH
     * precio: precio de la electricidad en la bolsa nacional
-El archivo debe contener la información del rango comprendido
+El archivo contiene la información del rango comprendido
 entre 1995 2021
 
 """
