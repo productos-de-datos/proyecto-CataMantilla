@@ -24,7 +24,7 @@ def create_data_lake():
     import os
 
     os.mkdir("data_lake")
-    parent_directoy = 'data_lake'
+
     directory = [
         'landing',
         'raw',
@@ -32,8 +32,8 @@ def create_data_lake():
         'business'
     ]
 
-    for d in directory:
-        os.mkdir(os.path.join('data_lake',d))
+    for carpet in directory:
+        os.mkdir(os.path.join('data_lake',carpet))
     
     dir_business = [
         'business/reports',
@@ -42,8 +42,8 @@ def create_data_lake():
         'business/forecasts'
     ]
 
-    for d in dir_business:
-        os.mkdir(os.path.join('data_lake',d))
+    for carpet in dir_business:
+        os.mkdir(os.path.join('data_lake',carpet))
 
 
 if __name__ == "__main__":
