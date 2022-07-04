@@ -8,14 +8,15 @@ Construya un pipeline de Luigi que:
 * Calcule los precios promedios mensuales
 
 En luigi llame las funciones que ya creo.
-
-
+las clases definidas son: ingestar_data,transformar_data
+limpiar_data,computar_precio_diario y computar_precio_mensual
 """
 import luigi 
 from luigi import Task, LocalTarget 
- 
- 
-class ingestar_data(Task): 
+
+
+class ingestar_data(Task):
+
     def output(self): 
         return LocalTarget('data_lake/landing/arc.csv') 
  
