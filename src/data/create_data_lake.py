@@ -1,6 +1,6 @@
 """
 Modulo Creación data_lake
-
+---------------------------------------------
 Se crea el data lake con las siguientes capas
 
     ```
@@ -19,10 +19,10 @@ Se crea el data lake con las siguientes capas
     ```
 """
 
-def create_data_lake():
-    
-    import os
 
+import os
+def create_data_lake():
+    """Funcion crear data_lake"""
     os.mkdir("data_lake")
 
     directory = [
@@ -32,9 +32,8 @@ def create_data_lake():
         "business",
     ]
 
-    for carpet in directory:
-        os.mkdir(os.path.join("data_lake", carpet))
-    
+    for folder in directory:
+        os.mkdir(os.path.join("data_lake", folder))
     dir_business = [
         "business/reports",
         "business/reports/figures",
@@ -42,12 +41,12 @@ def create_data_lake():
         "business/forecasts",
     ]
 
-    for carpet in dir_business:
-        os.mkdir(os.path.join("data_lake", carpet))
+    for folder in dir_business:
+        os.mkdir(os.path.join("data_lake", folder))
 
 
 if __name__ == "__main__":
     import doctest
-
-    create_data_lake()
+    
     doctest.testmod()
+    create_data_lake()
