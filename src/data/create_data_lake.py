@@ -26,24 +26,24 @@ def create_data_lake():
     os.mkdir("data_lake")
 
     directory = [
-        'landing',
-        'raw',
-        'cleansed',
-        'business'
+        "landing",
+        "raw",
+        "cleansed",
+        "business",
     ]
 
     for carpet in directory:
-        os.mkdir(os.path.join('data_lake',carpet))
+        os.mkdir(os.path.join("data_lake", carpet))
     
     dir_business = [
-        'business/reports',
-        'business/reports/figures',
-        'business/features',
-        'business/forecasts'
+        "business/reports",
+        "business/reports/figures",
+        "business/features",
+        "business/forecasts",
     ]
 
     for carpet in dir_business:
-        os.mkdir(os.path.join('data_lake',carpet))
+        os.mkdir(os.path.join("data_lake", carpet))
 
 
 if __name__ == "__main__":
