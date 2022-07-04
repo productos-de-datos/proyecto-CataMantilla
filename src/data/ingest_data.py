@@ -5,19 +5,22 @@ Descarga los archivos de precios de bolsa nacional en los formatos xls y xlsx a
 la capa data_lake/landing de la siguiente ruta:
     https://github.com/jdvelasq/datalabs/tree/master/datasets/precio_bolsa_nacional/
 
+Función ingest_data Descargar los archvivos de la ruta indicada
+
+Función test_ruta_origen verifica que el datalake contenga los folder requeridos
 
 """
 import os
 def ingest_data():
-    
+
     import requests
     from bs4 import BeautifulSoup
     import re
     
     url = 'https://github.com/jdvelasq/datalabs/tree/master/datasets/precio_bolsa_nacional/xls'
 
-    r = requests.get(url)
-    html_doc = r.text
+    requested_url = requests.get(url)
+    html_doc = requested_url.text
     soup = BeautifulSoup(html_doc, features='html.parser')
     a_tags = soup.find_all('a')
     urls_xlsx = [
@@ -39,8 +42,10 @@ def ingest_data():
 
 
 def test_ruta_origen():
+    
     assert set(os.listdir()) - set(['.git', '.github', '.gitignore',
-             'data_lake', 'grader.py', 'Makefile', 'README.md', 'src']) == set()
+                                    '.vscode', 'data_lake', 'grader.py', 'Makefile', 'README.md', 'src']) == set()
+
 
 if __name__ == "__main__":
     import doctest
