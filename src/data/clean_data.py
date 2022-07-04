@@ -1,21 +1,22 @@
-import pandas as pd
-import os
-import glob
-
-def clean_data():
-    """Realice la limpieza y transformación de los archivos CSV.
-
-    Usando los archivos data_lake/raw/*.csv, cree el archivo data_lake/cleansed/precios-horarios.csv.
-    Las columnas de este archivo son:
-
+"""
+Modulo Limpieza de datos
+-----------------------------------
+Use los archivos data_lake/raw/*.csv, cree el archivo
+data_lake/cleansed/precios-horarios.csv. el cual debe tener 
+lo siguiente:
     * fecha: fecha en formato YYYY-MM-DD
     * hora: hora en formato HH
     * precio: precio de la electricidad en la bolsa nacional
+El archivo debe contener la información del rango comprendido
+entre 1995 2021
 
-    Este archivo contiene toda la información del 1997 a 2021.
+"""
+import os
+import pandas as pd
+import glob
 
-
-    """
+def clean_data():
+    
     cleansed_df = []
 
     for f in range(1995, 2022):

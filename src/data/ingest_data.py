@@ -7,6 +7,7 @@ la capa data_lake/landing de la siguiente ruta:
 
 
 """
+import os
 def ingest_data():
     
     import requests
@@ -36,6 +37,10 @@ def ingest_data():
         file = requests.get(url_xls, allow_redirects=True )
         open('data_lake/landing/{}.xls'.format(i), 'wb').write(file.content)
 
+
+def test_ruta_origen():
+    assert set(os.listdir()) - set(['.git', '.github', '.gitignore',
+             'data_lake', 'grader.py', 'Makefile', 'README.md', 'src']) == set()
 
 if __name__ == "__main__":
     import doctest

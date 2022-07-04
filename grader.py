@@ -159,4 +159,8 @@ test = {
     "12": test_12,
 }[sys.argv[1]]
 
-test()
+if __name__ == "__main__":
+
+    import doctest
+    doctest.testmod()
+    test()
