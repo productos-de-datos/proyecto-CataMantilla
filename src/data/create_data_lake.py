@@ -1,7 +1,8 @@
 """
 Modulo Creación data_lake
 ---------------------------------------------
-Se crea el data lake con las siguientes capas
+create_data_lake
+crea el data lake con las siguientes capas
 
     ```
     .
@@ -18,11 +19,11 @@ Se crea el data lake con las siguientes capas
 
     ```
 """
-
-
 import os
+
 def create_data_lake():
-    """Funcion crear data_lake"""
+    """create_data_lake crea el datalake con las capas requeridas"""
+
     os.mkdir("data_lake")
 
     directory = [
