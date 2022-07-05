@@ -1,16 +1,35 @@
+"""
+La función make_daily_prices_plot 
+Crea un grafico de lines que representa los precios promedios diarios.
+Usando el archivo data_lake/business/precios-diarios.csv, crea un grafico de
+lines que representa los precios promedios diarios.
+El archivo se debe salvar en formato PNG en data_lake/business/reports/figures/daily_prices.png.
+"""
+
 def make_daily_prices_plot():
-    """Crea un grafico de lines que representa los precios promedios diarios.
+    """función make_daily_prices_plot"""
+    import pandas as pd
+    import matplotlib.pyplot as plt
 
-    Usando el archivo data_lake/business/precios-diarios.csv, crea un grafico de
-    lines que representa los precios promedios diarios.
 
-    El archivo se debe salvar en formato PNG en data_lake/business/reports/figures/daily_prices.png.
+    path_file = r'data_lake/business/precios-diarios.csv'
+    datos = pd.read_csv(path_file, index_col=None, sep=',', header=0)
+    datos["fecha"] = pd.to_datetime(datos["fecha"])
+    x = datos.fecha
+    y = datos.precio
 
-    """
-    raise NotImplementedError("Implementar esta función")
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, y, 'b', label='Promedio Diario')
+    plt.title('Precios Promedios Diarios')
+    plt.xlabel('Fecha')
+    plt.ylabel('Precio')
+    plt.legend()
+    plt.savefig("data_lake/business/reports/figures/daily_prices.png")
+
 
 
 if __name__ == "__main__":
-    import doctest
-
+    
+    import doctest    
     doctest.testmod()
+    make_daily_prices_plot()
